@@ -1,35 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: netflix-deployment
-  labels:
-    app: netflix-app
+  name: netflix-app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: netflix-app
+      app: netflix
   template:
     metadata:
       labels:
-        app: netflix-app
+        app: netflix
     spec:
       containers:
-      - name: my-netflix-app
-        image: netflix:v1
+      - name: netflix
+        image: us-central1-docker.pkg.dev/prep-project25/demo-image/netflix:v1
         ports:
-        - containerPort: 80
+        - containerPort: 8080
 ---
 apiVersion: v1
-kind: Service 
+kind: Service
 metadata:
-  name: my-service
-  labels:
-    app: netflix-app
+  name: netflix-service
 spec:
+  type: LoadBalancer
   selector:
-    app: netflix-app
+    app: netflix
   ports:
   - port: 80
-    targetPort: 80
-  type: LoadBalancer
+    targetPort: 8080
