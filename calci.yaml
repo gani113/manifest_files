@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: calci
-        image: us-central1-docker.pkg.dev/saraz-proj26/test-repo/calci-app:v1
+        image: us-central1-docker.pkg.dev/saraz-proj26/test-repo/calci-app:v2
         ports:
         - containerPort: 5000
 ---
