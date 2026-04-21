@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calci-app
+  namespace: devops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: calci
+  template:
+    metadata:
+      labels:
+        app: calci
+    spec:
+      containers:
+      - name: calci
+        image: us-central1-docker.pkg.dev/saraz-proj26/test-repo/calci-app:v1
+        ports:
+          containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: calci-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: calci
+  ports:
+  - port: 80
+    targetPort: 5000
