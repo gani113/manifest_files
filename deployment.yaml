@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: netflix
-        image: us-central1-docker.pkg.dev/saraz-proj26/test-repo/netflix:v1
+        image: us-central1-docker.pkg.dev/saraz-proj26/test-repo/netflix:v1.24
         ports:
         - containerPort: 4000
 ---
